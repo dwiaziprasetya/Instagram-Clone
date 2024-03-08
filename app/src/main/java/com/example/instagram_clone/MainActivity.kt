@@ -5,18 +5,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.rounded.Add
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -36,25 +37,30 @@ class MainActivity : ComponentActivity() {
                     Scaffold(
                         topBar = {
                             TopAppBar(
-                                modifier = Modifier.padding(8.dp),
                                 title = {},
                                 navigationIcon = {
                                     Image(
                                         painter = painterResource(R.drawable.instagram_text_icon),
-                                        contentDescription = null
+                                        contentDescription = null,
+                                        modifier = Modifier.padding(start = 8.dp)
                                     )
                                 },
                                 actions = {
-                                    IconButton(onClick = {}) {
+                                    Row(
+                                        modifier = Modifier
+                                            .padding(16.dp)
+                                            .width(80.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                    ) {
                                         Icon(
-                                            imageVector = Icons.Default.FavoriteBorder,
+                                            painter = painterResource(R.drawable.favourite_icon),
                                             contentDescription = "Favourite Icon",
+                                            modifier = Modifier.size(30.dp)
                                         )
-                                    }
-                                    IconButton(onClick = {}) {
                                         Icon(
-                                            imageVector = Icons.Rounded.Add,
-                                            contentDescription = "Send Icon"
+                                            painter = painterResource(R.drawable.messenger_icon),
+                                            contentDescription = "Send Icon",
                                         )
                                     }
                                 }
