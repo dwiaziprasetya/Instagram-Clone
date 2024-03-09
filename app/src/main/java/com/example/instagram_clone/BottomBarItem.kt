@@ -1,8 +1,8 @@
 package com.example.instagram_clone
 
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
 
 data class BottomBarItem(
     val title: String,
-    val icon: ImageVector
+    val icon: Painter
 )
