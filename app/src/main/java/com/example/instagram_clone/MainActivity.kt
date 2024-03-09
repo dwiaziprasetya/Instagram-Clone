@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity() {
                                     .drawWithContent {
                                         drawContent()
                                         drawLine(
-                                            color = Color.Gray,
+                                            color = Color(0xFFE3E3E3),
                                             start = Offset(0f, 0f),
                                             end = Offset(size.width, 0f),
                                             strokeWidth = 2f
