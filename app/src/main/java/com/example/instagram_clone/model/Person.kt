@@ -1,4 +1,4 @@
-package com.example.instagram_clone.ui
+package com.example.instagram_clone.model
 
 import androidx.annotation.DrawableRes
 

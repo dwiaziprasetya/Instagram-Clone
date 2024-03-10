@@ -1,4 +1,4 @@
-package com.example.instagram_clone
+package com.example.instagram_clone.ui.component
 
 import androidx.compose.ui.graphics.painter.Painter
 
