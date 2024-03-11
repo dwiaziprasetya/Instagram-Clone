@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Instagram-Clone</string>
+    <!-- Person username -->
+    <string name="frank">frank</string>
+    <string name="bill">bill</string>
+    <string name="molly">molly</string>
+    <string name="james">james</string>
+    <string name="jhon">jhon</string>
+    <string name="shelia">shelia</string>
+    <string name="mark">mark</string>
+    <string name="jamal">jamal</string>
+    <string name="bella">bela</string>
 </resources>

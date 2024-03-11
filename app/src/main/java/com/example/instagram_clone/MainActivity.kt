@@ -5,7 +5,6 @@
     import androidx.activity.compose.setContent
     import androidx.compose.foundation.Image
     import androidx.compose.foundation.layout.Arrangement
-    import androidx.compose.foundation.layout.PaddingValues
     import androidx.compose.foundation.layout.Row
     import androidx.compose.foundation.layout.fillMaxSize
     import androidx.compose.foundation.layout.height
@@ -13,7 +12,7 @@
     import androidx.compose.foundation.layout.size
     import androidx.compose.foundation.layout.width
     import androidx.compose.foundation.lazy.LazyColumn
-    import androidx.compose.foundation.lazy.LazyRow
+    import androidx.compose.foundation.lazy.items
     import androidx.compose.material.icons.Icons
     import androidx.compose.material.icons.filled.KeyboardArrowDown
     import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,10 +34,10 @@
     import androidx.compose.ui.input.nestedscroll.nestedScroll
     import androidx.compose.ui.res.painterResource
     import androidx.compose.ui.unit.dp
+    import com.example.instagram_clone.model.dummyPost
     import com.example.instagram_clone.ui.component.BottomBarItem
-    import com.example.instagram_clone.ui.component.Post
-    import com.example.instagram_clone.ui.component.StoryItem
-    import com.example.instagram_clone.ui.component.YourStory
+    import com.example.instagram_clone.ui.component.PostItem
+    import com.example.instagram_clone.ui.component.Story
     import com.example.instagram_clone.ui.theme.InstagramCloneTheme
 
     class MainActivity : ComponentActivity() {
@@ -159,35 +158,20 @@
                                 }
                             }
                         ) { padding ->
-                            LazyColumn(modifier = Modifier.padding(padding)) {
-                                item {
-                                    LazyRow(
-                                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                                        contentPadding = PaddingValues(horizontal = 8.dp),
-                                        modifier = Modifier
-                                            .drawWithContent {
-                                                drawContent()
-                                                drawLine(
-                                                    color = Color(0xFFE3E3E3),
-                                                    start = Offset(0f, size.height),
-                                                    end = Offset(size.width, size.height),
-                                                    strokeWidth = 2f
-                                                )
-                                            }
-                                    ) {
-                                        item { YourStory() }
-                                        items(23) {
-                                            StoryItem(
-                                                image = R.drawable.amelia_andani,
-                                                name = "ameliaandani"
-                                            )
-                                        }
-                                    }
-                                }
-                                items(5) {
-                                    Post(
-                                        name = "ameliaandani",
-                                        image = R.drawable.kak_amel
+                            LazyColumn(
+                                modifier = Modifier
+                                    .padding(padding),
+                            ) {
+                                item { Story() }
+                                items(dummyPost, key = {it.username}) { person ->
+                                    PostItem(
+                                        username = person.username,
+                                        image = person.imagePost,
+                                        profileImage = person.imageProfile,
+                                        like = person.like,
+                                        caption = person.caption,
+                                        commentCount = person.commentCount,
+                                        timePost = person.timePost
                                     )
                                 }
                             }

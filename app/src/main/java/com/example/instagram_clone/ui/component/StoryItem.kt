@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -22,16 +23,15 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instagram_clone.R
-import com.example.instagram_clone.ui.theme.InstagramCloneTheme
 
 @Composable
 fun StoryItem(
     image: Int,
-    name: String
+    name: Int,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -51,12 +51,13 @@ fun StoryItem(
                         end = Offset(70f, 70f)
                     ),
                     shape = CircleShape
-                ),
+                )
+                .border(5.dp, Color.White, shape = CircleShape),
             contentScale = ContentScale.Crop
         )
         Text(
             modifier = Modifier.padding(top = 5.dp),
-            text = name,
+            text = stringResource(name),
             fontSize = 10.sp,
         )
     }
@@ -66,14 +67,14 @@ fun StoryItem(
 fun YourStory() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.paddingFromBaseline(bottom = 5.dp)
     ) {
         Box {
             Image(
                 painter = painterResource(R.drawable.user),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(80.dp)
+                    .size(73.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
@@ -90,34 +91,16 @@ fun YourStory() {
                 modifier = Modifier
                     .border(
                         BorderStroke(2.dp, Color.White),
-                        shape = CircleShape
+                        shape = CircleShape,
                     )
                     .align(Alignment.BottomEnd)
             )
         }
         Text(
             text = "Your Story",
-            modifier = Modifier.padding(top = 5.dp),
+            modifier = Modifier
+                .padding(top = 5.dp),
             fontSize = 10.sp
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun YourStoryPreview() {
-    InstagramCloneTheme {
-        YourStory()
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun StoryItemPreview() {
-    InstagramCloneTheme {
-        StoryItem(
-            R.drawable.amelia_andani,
-            "Amelia Andani"
         )
     }
 }
